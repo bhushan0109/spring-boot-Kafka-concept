@@ -16,13 +16,13 @@ public class ProducerService<T> {
     private String topic;
 
     @Value("${spring.kafka.emails-topic}")
-    private String superHeroTopic;
+    private String superObjectTopic;
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
     @Autowired
-    private KafkaTemplate<String, T> kafkaTemplateSuperHero;
+    private KafkaTemplate<String, T> kafkaTemplatesuperObject;
 
 
     public void sendMessage(String message) {
@@ -31,8 +31,8 @@ public class ProducerService<T> {
     }
 
 
-    public void sendSuperHeroMessage(T superHero) {
-        logger.info("#### -> Publishing SuperHero :: {}", superHero);
-        kafkaTemplateSuperHero.send(superHeroTopic, superHero);
+    public void sendSuperObjectMessage(T superObject) {
+        logger.info("#### -> Publishing superObject :: {}", superObject);
+        kafkaTemplatesuperObject.send(superObjectTopic, superObject);
     }
 }

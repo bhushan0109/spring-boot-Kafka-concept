@@ -25,12 +25,12 @@ public class KafkaController {
 
 
     @PostMapping(value = "/publish")
-    public Map<String, Object> sendObjectToKafkaTopic(@RequestBody SuperObject superHero) {
-        producerService.sendSuperHeroMessage(superHero);
+    public Map<String, Object> sendObjectToKafkaTopic(@RequestBody SuperObject superObject) {
+        producerService.sendSuperObjectMessage(superObject);
 
         Map<String, Object> map = new HashMap<>();
-        map.put("message", "Successfully publisher Super Hero..!");
-        map.put("payload", superHero);
+        map.put("message", "Successfully publisher  superObject..!");
+        map.put("payload", superObject);
 
         return map;
     }

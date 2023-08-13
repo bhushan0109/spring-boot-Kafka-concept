@@ -21,7 +21,7 @@ public class ConsumerService {
 
 
     @KafkaListener(topics = {"${spring.kafka.emails-topic}"}, containerFactory = "kafkaListenerJsonFactory", groupId = "group_id")
-    public void consumeSuperHero(SuperObject superObject) {
+    public void consumesuperObject(SuperObject superObject) {
         logger.info("**** -> Consumed Super Hero :: {}", superObject);
     }
 
