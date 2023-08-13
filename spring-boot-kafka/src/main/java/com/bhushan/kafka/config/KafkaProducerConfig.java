@@ -21,8 +21,8 @@ public class KafkaProducerConfig {
     @Value("${spring.kafka.producer.bootstrap-servers: localhost:9092}")
     private String bootstrapServers;
 
-    @Value("${tpd.topic-name}")
-    private String topicName;
+    @Value("${tpd.simple-topic-name}")
+    private String simple_topic_name;
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // Json Producer
@@ -94,7 +94,7 @@ public class KafkaProducerConfig {
     
     @Bean
     public NewTopic adviceTopic() {
-        return new NewTopic(topicName, 3, (short) 1);
+        return new NewTopic(simple_topic_name, 3, (short) 1);
     }
 
 }

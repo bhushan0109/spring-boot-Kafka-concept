@@ -6,6 +6,8 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import com.bhushan.kafka.model.SuperObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class ConsumerService {
@@ -21,7 +23,8 @@ public class ConsumerService {
 	@KafkaListener(topics = {
 			"${spring.kafka.emails-topic}" }, containerFactory = "kafkaListenerJsonFactory", groupId = "group_id")
 	public void consumesuperObject(SuperObject superObject) {
-		logger.info("**** -> Consumed superObject:: {}", superObject);
+		logger.info("**** -> Consumed superObject -> {}", superObject);
+
 	}
 
 	@KafkaListener(topics = {

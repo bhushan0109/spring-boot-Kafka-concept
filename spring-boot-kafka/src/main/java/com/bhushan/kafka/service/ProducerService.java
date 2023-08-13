@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+import com.bhushan.kafka.model.SuperObject;
+
 @Service
 public class ProducerService<T> {
 
@@ -36,6 +38,7 @@ public class ProducerService<T> {
 	}
 
 	public void sendSuperObjectMessage(T superObject) {
+		//kafkaTemplateSuperObject.send(superObjectTopic,superObject);
 		kafkaJsonObjectSend(superObject);
 	}
 
@@ -74,6 +77,7 @@ public class ProducerService<T> {
 	public void kafkaJsonObjectSend(T superObject) {
 		// run the background process
 		logger.info("#### ->kafkaJsonObjectSend Publishing  message -> {}", superObject);
+		kafkaTemplateSuperObject.send(superObjectTopic,superObject);
 		ListenableFuture<SendResult<String, T>> listenableFuture = kafkaTemplateSuperObject.send(superObjectTopic,
 				superObject);
 
