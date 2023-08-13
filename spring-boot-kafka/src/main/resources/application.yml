@@ -16,4 +16,4 @@ spring:
 #      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
     topic: message-topic
-    superhero-topic: emails-topic
+    emails-topic: emails-topic
