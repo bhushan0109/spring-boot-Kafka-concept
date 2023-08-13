@@ -77,7 +77,6 @@ public class ProducerService<T> {
 	public void kafkaJsonObjectSend(T superObject) {
 		// run the background process
 		logger.info("#### ->kafkaJsonObjectSend Publishing  message -> {}", superObject);
-		kafkaTemplateSuperObject.send(superObjectTopic,superObject);
 		ListenableFuture<SendResult<String, T>> listenableFuture = kafkaTemplateSuperObject.send(superObjectTopic,
 				superObject);
 
