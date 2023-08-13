@@ -1,5 +1,6 @@
 package com.bhushan.kafka.config;
 
+import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,8 @@ public class KafkaProducerConfig {
     @Value("${spring.kafka.producer.bootstrap-servers: localhost:9092}")
     private String bootstrapServers;
 
+    @Value("${tpd.topic-name}")
+    private String topicName;
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // Json Producer
@@ -87,6 +90,11 @@ public class KafkaProducerConfig {
     @Bean
     public KafkaTemplate<String, String> kafkaStringTemplate() {
         return new KafkaTemplate<>(producerStringFactory());
+    }
+    
+    @Bean
+    public NewTopic adviceTopic() {
+        return new NewTopic(topicName, 3, (short) 1);
     }
 
 }

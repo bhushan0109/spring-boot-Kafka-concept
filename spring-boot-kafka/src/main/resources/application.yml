@@ -17,3 +17,6 @@ spring:
 
     topic: message-topic
     emails-topic: emails-topic
+    
+tpd:
+   simple-topic-name: simple-topic
